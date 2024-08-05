@@ -1,6 +1,9 @@
 #include<ImageSearch2015.au3>
 #include <Misc.au3>
 #include<AutoItConstants.au3>
+#cs
+ShinyHUnter bot for Route 106
+#ce
 Global $Contador=0;
 Global $ContadorScreen=0;
 Global $hunting = True
@@ -103,12 +106,12 @@ While $hunting
 		EndIf
 		Else
 		While $fishing
-			ConsoleWrite("Entra" & @CRLF)
+
 		$result1 = _ImageSearchArea($noPico,1,$noPicox1,$noPicoy1,$noPicox2,$noPicoy2,$returnx,$returny,100,0)
 		$result2 = _ImageSearchArea($pico,1,$picox1,$picoy1,$picox2,$picoy2,$returnx,$returny,100,0)
 
 		If $result1 = 1 Then
-		ConsoleWrite("No pico" & @CRLF)
+
 		Sleep(250)
 		send("{a down}")
 		Sleep(100)
@@ -118,7 +121,7 @@ While $hunting
 		ElseIf $result2 = 1 Then
 			$fishing = false
 			While $tirar
-		ConsoleWrite("tirando" & @CRLF)
+
 		send("{a down}")
 		Sleep(100)
 		send("{a up}")
@@ -129,7 +132,7 @@ While $hunting
 		$result3 = _ImageSearchArea($tardado,1,$tardadox1,$tardadoy1,$tardadox2,$tardadoy2,$returnx,$returny,100,0)
 		$result4 = _ImageSearchArea($encuentroimg,1,$encuentrox1,$encuentroy1,$encuentrox2,$encuentroy2,$returnx,$returny,100,0)
 			IF $result3 = 1 Then
-		ConsoleWrite("Se escapo" & @CRLF)
+
 		send("{a down}")
 		Sleep(100)
 		send("{a up}")
@@ -143,92 +146,7 @@ While $hunting
 		EndIf
 		WEnd
 		EndIf
-		#cs
 
-	if $result=1 Then
-		send("{x}")
-		if $encuentro=False or $fishing= False then
-		$encuentro= True
-		$fishing = True
-		EndIf
-		Else
-	While $fishing
-		$result1 = _ImageSearchArea($noPico,1,$noPicox1,$noPicoy1,$noPicox2,$noPicoy2,$returnx,$returny,0,0)
-		$result2 = _ImageSearchArea($pico,1,$picox1,$picoy1,$picox2,$picoy2,$returnx,$returny,0,0)
-		If $result1 = 1 Then
-			send("{a}")
-			 $fishing = false
-		ElseIf $result2 = 1 Then
-			 While $result2 = 1
-				 $result2 = _ImageSearchArea($pico,1,$picox1,$picoy1,$picox2,$picoy2,$returnx,$returny,0,0)
-			send("{a}")
-			send("{a}")
-			send("{a}")
-			$result3 = _ImageSearchArea($tardado,1,$tardadox1,$tardadoy1,$tardadox2,$tardadoy2,$returnx,$returny,0,0)
-			$result4 = _ImageSearchArea($encuentro,1,$encuentrox1,$encuentroy1,$encuentrox2,$encuentroy2,$returnx,$returny,0,0)
-			If $result3= 1 Then
-			$jalando = False
-			$fishing = false
-			send("{a}")
-			send("{a}")
-			send("{a}")
-			ElseIf $result4=1 Then
-
-			ElseIf $result3=0 Then
-			send("{a}")
-			send("{a}")
-			send("{a}")
-			EndIf
-
-
-		while $encuentro
-
-		$Contador+=1
-
-		If  Then
-			_ScreenCapture_Capture(@MyDocumentsDir & "\Screenshots\screen" & $ContadorScreen & ".jpg", 579, 54, 1350, 519)
-			$ContadorScreen+=1
-			$result7 = _ImageSearchArea($huir,1,$huirx1,$huiry1,$huirx2,$huiry2,$returnx,$returny,0,0)
-			while $result7 = 0
-				$result7 = _ImageSearchArea($huir,1,$huirx1,$huiry1,$huirx2,$huiry2,$returnx,$returny,0,0)
-			If $result7=1 Then
-
-				send("{NUMPADADD down}")
-				send("{LEFT down}")
-				Sleep(150)
-				send("{LEFT up}")
-				send("{RIGHT down}")
-				Sleep(150)
-				send("{RIGHT up}")
-				send("{a down}")
-				Sleep(150)
-				send("{a up}")
-				send("{NUMPADADD up}")
-				$encuentro= False
-				$Contador=0
-
-
-			EndIf
-
-			Wend
-			ElseIf $Contador >= 65 then
-			_ScreenCapture_Capture(@MyDocumentsDir & "\Screenshots\screen" & $ContadorScreen & ".jpg", 579, 54, 1350, 519)
-			send("{NUMPADADD down}")
-			Sleep(250)
-			send("{NUMPADADD up}")
-			$hunting= False
-			$encuentro= False
-			MsgBox($MB_OK,"Encontrado!!!!!","Se encontro un shiny")
-			EndIf
-
-
-			 WEnd
-
-		WEnd
-			 EndIf
-		WEnd
-			endif
-			 #ce
 	if _IsPressed("1B", $hDLL) Then
 	$hunting=False
 	MsgBox($MB_OK,"Fueraaaaaaaaaaaa","Fuera del Programa")
